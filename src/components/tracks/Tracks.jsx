@@ -1,10 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context";
+import Loading from "../layout/Loading";
+import Track from "./Track";
 
 function Tracks() {
-  const { track_list } = useContext(GlobalContext);
-  console.log(track_list);
-  return <div>Tracks</div>;
+  const { track_list, loading, getTopSongs } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getTopSongs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return track_list.length === 0 ? (
+    <Loading />
+  ) : (
+    <>
+      <div className="row">
+        {track_list.map((item) => {
+          return <Track key={item.track.track_id} track={item.track} />;
+        })}
+      </div>
+    </>
+  );
 }
 
 export default Tracks;
