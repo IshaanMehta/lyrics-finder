@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Track = ({ track }) => {
   const [isMouseOver, setMouseOver] = useState(false);
@@ -11,15 +12,17 @@ const Track = ({ track }) => {
   };
 
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 h-90">
       <div
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
         className={
-          isMouseOver ? "card border-info mb-3" : "card text-white bg-info mb-3"
+          isMouseOver
+            ? "card border-dark mb-3 on-card-container card-container"
+            : "card text-white bg-dark mb-3 card-container"
         }
       >
-        <div className={isMouseOver ? "card-body text-info" : "card-body"}>
+        <div className={isMouseOver ? "card-body text-dark" : "card-body"}>
           <h5 className="card-title">{track.track_name}</h5>
           <p className="card-text">
             <i className="fa-solid fa-music"></i>
@@ -28,6 +31,14 @@ const Track = ({ track }) => {
             <i class="fa-solid fa-compact-disc"></i>
             <strong> Album </strong>: {track.album_name}
           </p>
+          <Link
+            to={`lyrics/track/${track.track_id}`}
+            className={
+              isMouseOver ? "btn btn-dark btn-block" : "btn btn-light btn-block"
+            }
+          >
+            <i class="fa-solid fa-scroll"></i> View Lyrics
+          </Link>
         </div>
       </div>
     </div>

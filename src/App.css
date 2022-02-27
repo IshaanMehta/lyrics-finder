@@ -2,8 +2,12 @@ body {
   background-color: #e9dac1;
 }
 
-.column-container {
-  max-height: 100px;
+.card-container {
+  border-radius: 15px;
+}
+
+.on-card-container {
+  box-shadow: 5px 10px 18px #888888;
 }
 
 /* loading component */
