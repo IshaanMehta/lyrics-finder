@@ -12,13 +12,11 @@ body {
 
 /* loading component */
 .loading-container {
-  background-color: aquamarine;
   text-align: center;
-  width: 100%;
   height: 100%;
 }
 
 .loading-img {
   vertical-align: middle;
-  width: 20%;
+  width: 40%;
 }

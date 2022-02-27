@@ -1,10 +1,10 @@
 import React from "react";
-import loadingHand from "./loadingHand.gif";
+import loadingFish from "./loadingFish.gif";
 
 function Loading() {
   return (
-    <div className="container-fluid loading-container">
-      <img className="loading-img" src={loadingHand} alt="loading tracks" />
+    <div className="loading-container">
+      <img className="loading-img" src={loadingFish} alt="loading tracks" />
     </div>
   );
 }

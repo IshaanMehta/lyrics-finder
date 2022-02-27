@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Index from "./components/layout/Index";
 import { GlobalProvider } from "./context";
+import Lyrics from "./components/tracks/Lyrics";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Index />} />
+              <Route exact path="/lyrics/track/:id" element={<Lyrics />} />
             </Routes>
           </div>
         </>
