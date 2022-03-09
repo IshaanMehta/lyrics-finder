@@ -5,7 +5,10 @@ import Reducer from "./Reducer";
 const initialState = {
   track_list: [],
   heading: "Top 10 tracks",
-  loading: true
+  loading: true,
+  // lyrics component
+  lyrics: {},
+  track: {}
 };
 
 // global context
@@ -27,7 +30,33 @@ export const GlobalProvider = ({ children }) => {
         type: "GET_TOP_SONGS",
         payload: res.data.message.body.track_list
       });
-      console.log(res.data);
+      // console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getTrackLyrics = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MM_KEY}`
+      );
+
+      dispatch({
+        type: "GET_LYRICS",
+        payload: res.data.message.body.lyrics
+      });
+      // console.log(res.data);
+
+      const trackRes = await axios.get(
+        `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${id}&apikey=${process.env.REACT_APP_MM_KEY}`
+      );
+      dispatch({
+        type: "GET_TRACK",
+        payload: res.data.message.body.track
+      });
+
+      console.log(trackRes);
     } catch (err) {
       console.log(err);
     }
@@ -38,7 +67,10 @@ export const GlobalProvider = ({ children }) => {
       value={{
         track_list: state.track_list,
         heading: state.heading,
-        getTopSongs
+        lyrics: state.lyrics,
+        track: state.track,
+        getTopSongs,
+        getTrackLyrics
       }}
     >
       {children}

@@ -28,7 +28,7 @@ const Track = ({ track }) => {
             <i className="fa-solid fa-music"></i>
             <strong> Artist </strong>: {track.artist_name}
             <br />
-            <i class="fa-solid fa-compact-disc"></i>
+            <i className="fa-solid fa-compact-disc"></i>
             <strong> Album </strong>: {track.album_name}
           </p>
           <Link
@@ -37,7 +37,7 @@ const Track = ({ track }) => {
               isMouseOver ? "btn btn-dark btn-block" : "btn btn-light btn-block"
             }
           >
-            <i class="fa-solid fa-scroll"></i> View Lyrics
+            <i className="fa-solid fa-scroll"></i> View Lyrics
           </Link>
         </div>
       </div>
