@@ -18,6 +18,12 @@ const Reducer = (state, action) => {
         track: action.payload,
         loading: false
       };
+    case "FETCH_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+        loading: true
+      };
 
     default:
       return state;

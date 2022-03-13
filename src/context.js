@@ -6,6 +6,7 @@ const initialState = {
   track_list: [],
   heading: "Top 10 tracks",
   loading: true,
+  error: null,
   // lyrics component
   lyrics: {},
   track: {}
@@ -53,10 +54,10 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_TRACK",
-        payload: res.data.message.body.track
+        payload: trackRes.data.message.body.track
       });
 
-      console.log(trackRes);
+      // console.log(trackRes);
     } catch (err) {
       console.log(err);
     }
