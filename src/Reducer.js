@@ -4,6 +4,7 @@ const Reducer = (state, action) => {
       return {
         ...state,
         track_list: action.payload,
+        heading: "TOP 10 SONGS",
         loading: false
       };
     case "GET_LYRICS":

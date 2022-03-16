@@ -4,7 +4,7 @@ import Reducer from "./Reducer";
 
 const initialState = {
   track_list: [],
-  heading: "Top 10 tracks",
+  heading: "",
   loading: true,
   error: null,
   // lyrics component
