@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
@@ -9,7 +9,9 @@ const initialState = {
   error: null,
   // lyrics component
   lyrics: {},
-  track: {}
+  track: {},
+  // search component
+  trackTitle: ""
 };
 
 // global context
@@ -63,6 +65,28 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const searchLyrics = async (song) => {
+    try {
+      dispatch({
+        type: "LYRICS_SEARCH",
+        payload: song
+      });
+
+      const res = await axios.get(
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${song}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`
+      );
+
+      dispatch({
+        type: "SEARCH_RESULT",
+        payload: res.data.message.body.track_list
+      });
+
+      // console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -71,7 +95,8 @@ export const GlobalProvider = ({ children }) => {
         lyrics: state.lyrics,
         track: state.track,
         getTopSongs,
-        getTrackLyrics
+        getTrackLyrics,
+        searchLyrics
       }}
     >
       {children}

@@ -19,6 +19,20 @@ const Reducer = (state, action) => {
         track: action.payload,
         loading: false
       };
+    case "LYRICS_SEARCH":
+      return {
+        ...state,
+        trackTitle: action.payload,
+        track_list: [],
+        loading: true
+      };
+    case "SEARCH_RESULT":
+      return {
+        ...state,
+        track_list: action.payload,
+        heading: "Search Result",
+        loading: false
+      };
     case "FETCH_ERROR":
       return {
         ...state,

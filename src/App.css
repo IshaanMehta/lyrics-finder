@@ -3,6 +3,12 @@ body {
 }
 
 /* Landing Page */
+.heading {
+  font-family: "Staatliches", cursive;
+  letter-spacing: 1.5;
+  font-size: 3rem;
+}
+
 .card-container {
   border-radius: 15px;
 }

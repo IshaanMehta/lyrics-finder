@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { GlobalContext } from "../../context";
 
 function Search() {
+  const { searchLyrics } = useContext(GlobalContext);
+
   const [search, setSearch] = useState("");
 
   const handleChange = (event) => {
     const { value } = event.target;
     setSearch(value);
-    console.log(search);
+    // console.log(search);
+  };
+
+  const handleSubmit = (event) => {
+    searchLyrics(search);
+    // setSearch("");
+    event.preventDefault();
   };
 
   return (
@@ -15,7 +24,7 @@ function Search() {
         <i className="fa-solid fa-music"></i> Search for a Song
       </h1>
       <p className="lead text-center">Get any song lyrics</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
             className="form-control form-control-lg"
@@ -25,6 +34,9 @@ function Search() {
             value={search}
           />
         </div>
+        <button className="btn btn-info btn-lg btn-block" type="submit">
+          Get Song Lyrics
+        </button>
       </form>
     </div>
   );

@@ -5,8 +5,10 @@ import Tracks from "../tracks/Tracks";
 function Index() {
   return (
     <>
-      <Search />
-      <Tracks />
+      <div className="container">
+        <Search />
+        <Tracks />
+      </div>
     </>
   );
 }
