@@ -1,8 +1,29 @@
 body {
-  background-color: #e9dac1;
+  background-color: #f7e2e2;
 }
 
 /* Landing Page */
+.nav-heading {
+  font-family: "Pacifico", cursive;
+  letter-spacing: 1.5;
+}
+
+.search-box {
+  background-color: #203239;
+  color: white;
+}
+
+.search-heading {
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 1;
+}
+
+.search-sub-heading {
+  font-family: "Pacifico", cursive;
+  letter-spacing: 2;
+  font-weight: 100;
+}
+
 .heading {
   font-family: "Staatliches", cursive;
   letter-spacing: 1.5;
@@ -26,4 +47,12 @@ body {
 .loading-img {
   vertical-align: middle;
   width: 40%;
+}
+
+/* Lyrics page */
+
+li.list-group-item {
+  background-color: #3a3845;
+  color: white;
+  border-bottom-color: white;
 }
